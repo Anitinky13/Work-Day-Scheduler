@@ -1,5 +1,6 @@
 //current date
 //get time and daate format from moment.js
+var myDate = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
 //declare variables
 //variable to
 //need to save in local storage
