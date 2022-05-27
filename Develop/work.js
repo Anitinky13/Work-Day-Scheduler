@@ -5,22 +5,6 @@ $(document).ready(function () {
   var currentDay = moment().format("MMMM Do YYYY, HH:mm");
   $("#currentDay").text(currentDay);
 
-  var toDoAlert = function () {
-    var curTime = moment().format("H");
-    $("textarea").each(function () {
-      var hour = parseInt($(this).attr("text"));
-
-      if (hour == curTime) {
-        $(this).addClass("Present");
-      } else if (hour > curTime) {
-        $(this).addClass("Future");
-      } else {
-        $(this).addClass("Past");
-      }
-    });
-  };
-  toDoAlert();
-
   //when user clicks on save btn
   $(document).ready(function () {
     $(".saveBtn").on("click", function (event) {
@@ -31,6 +15,15 @@ $(document).ready(function () {
       localStorage.setItem(time, text);
       //localStorage.getItem(".Description");
     });
+    var loadtasks = function () {
+      var savedTasks = localStorage.getItem("text");
+
+      if (!savedTasks) {
+        return false;
+      }
+      savedTasks = JSON.parse(savedTasks);
+    };
+    loadtasks();
 
     //set event handler for all save buttons
 
